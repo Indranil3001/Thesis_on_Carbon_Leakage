@@ -129,6 +129,4 @@ Emission levels are not used as outcomes, because log consumption per capita sho
 
 **Indranil** · [GitHub @Indranil3001](https://github.com/Indranil3001)
 
-## License
 
-<Choose a license, for example MIT for code. Data remain subject to the terms of their original providers.>
