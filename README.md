@@ -33,9 +33,9 @@ The key measure is the gap between a country's consumption-based and production-
 | Variable | Source | Coverage |
 |---|---|---|
 | Territorial fossil CO₂ | [Global Carbon Budget 2025](https://globalcarbonbudget.org/), national emissions workbook | 1850 to 2024 |
-| Consumption-based fossil CO₂ | Global Carbon Budget 2025, national emissions workbook | 1990 to 2024 |
-| GDP per capita (PPP, constant 2021 int. $) | World Bank, World Development Indicators | 1990 to 2023 |
-| Trade openness (% of GDP) | World Bank, World Development Indicators | 1990 to 2023 |
+| Consumption-based fossil CO₂ | [Global Carbon Budget 2025](https://globalcarbonbudget.org/), national emissions workbook | 1990 to 2024 |
+| GDP per capita (PPP, constant 2021 int. $) | [World Bank, World Development Indicators](https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD) | 1990 to 2023 |
+| Trade openness (% of GDP) | [World Bank, World Development Indicators](https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS) | 1990 to 2023 |
 | Population | UN World Population Prospects | 1990 to 2023 |
 | Treatment (Annex B status) | UNFCCC, Kyoto Protocol Annex B | |
 
@@ -52,11 +52,12 @@ The raw data files are not included in this repository. Download them from the s
 │   ├── <World Bank GDP and trade files>                                   # (download)
 │   ├── Population_with_ISO3.csv                                          # UN population (download)
 │   └── data_final.csv                                                    # merged panel, created by data_integ.ipynb
-├── output/                        # tables and figures written by the notebooks
-├── data_integ.ipynb               # 1. data integration
-├── thesis_EDA.ipynb               # 2. feature engineering and exploratory analysis
-├── thesis_estimation.ipynb        # 3. difference-in-differences estimation
-├── requirements.txt
+├── Code/                        # tables and figures written by the notebooks
+|   ├──data_integ.ipynb               # 1. data integration
+|   ├──thesis_EDA.ipynb               # 2. feature engineering and exploratory analysis
+|   └──thesis_estimation.ipynb        # 3. difference-in-differences estimation
+├── Paper
+|   └──Thesis_Indranil.pdf
 └── README.md
 ```
 
@@ -69,7 +70,7 @@ The raw data files are not included in this repository. Download them from the s
    cd <repo-name>
    python -m venv .venv
    source .venv/bin/activate        # Windows: .venv\Scripts\activate
-   pip install -r requirements.txt
+
    ```
 
 2. Download the raw data files listed above into `Data/`.
@@ -80,7 +81,7 @@ The raw data files are not included in this repository. Download them from the s
    |---|---|
    | `data_integ.ipynb` | Reshapes the GCB workbook to long format, drops aggregates and bunkers, maps country names to ISO3 codes, merges emissions with GDP, trade and population, codes treatment, and writes `Data/data_final.csv`. |
    | `thesis_EDA.ipynb` | Builds the outcome variables, handles Panama's negative consumption values, checks covariate balance and pre-treatment trends, and estimates fixed-effects EKC curves on both accounting bases. |
-   | `thesis_estimation.ipynb` | Estimates the TWFE model, the event study, joint pre-trend tests, and robustness checks (transition economies, 2008 treatment date, 1997 pseudo-treatment, leave-one-out). Writes tables and figures to `output/`. |
+   | `thesis_estimation.ipynb` | Estimates the TWFE model, the event study, joint pre-trend tests, and robustness checks (transition economies, 2008 treatment date, 1997 pseudo-treatment, leave-one-out).|
 
 Run the notebooks from the project root, because `thesis_estimation.ipynb` reads `Data/data_final.csv` with a relative path.
 
@@ -120,10 +121,11 @@ Emission levels are not used as outcomes, because log consumption per capita sho
 
 ## Key references
 
-- Aichele, R. and Felbermayr, G. (2015). Kyoto and carbon leakage: An empirical analysis of the carbon content of bilateral trade. *Review of Economics and Statistics*, 97(1), 104-115.
+- [Aichele, R. and Felbermayr, G. (2015). Kyoto and carbon leakage: An empirical analysis of the carbon content of bilateral trade. *Review of Economics and Statistics*, 97(1), 104-115(h)](https://doi.org/10.1162/REST_a_00438)
 - Friedlingstein, P. et al. (2025). Global Carbon Budget 2025. *Earth System Science Data*.
 - Peters, G.P., Minx, J.C., Weber, C.L. and Edenhofer, O. (2011). Growth in emission transfers via international trade from 1990 to 2008. *PNAS*, 108(21), 8903-8908.
-- Rambachan, A. and Roth, J. (2023). A more credible approach to parallel trends. *Review of Economic Studies*, 90(5), 2555-2591.
+- [Rambachan, A. and Roth, J. (2023). A more credible approach to parallel trends. *Review of Economic Studies*, 90(5), 2555-2591](https://academic.oup.com/restud/article-abstract/90/5/2555/7039335?redirectedFrom=fulltext).
+- [Callaway & Sant'Anna (2021)](https://www.sciencedirect.com/science/article/pii/S0304407620303948)
 
 ## Author
 
